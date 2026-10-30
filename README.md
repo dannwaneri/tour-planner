@@ -64,6 +64,7 @@ We hid the real map of artists who do have data, picked their proxy, and compare
 - **Qloo does not mark every artist who stopped performing.** Fela Kuti (d. 1997) has no `end_year`. The plan tells the user to check each suggested artist.
 - **Name search is global.** "Ice" returns Ice Cube and Iceage, not Ice Prince. Type the full name.
 - **Qloo describes what groups with shared taste like.** It says nothing about one person, and nothing about ticket sales.
+- **Audience compare was tested and left out.** We tried Qloo's `/v2/analysis/compare` to explain why an opener fits. For Phyno and Olamide, the top shared tags were Rhythmic, Blues, Funk, Jazz and Soul (0.99); Nigeria (0.98), Afrobeat (0.88) and Highlife (0.85) came after them. Showing the top tags would tell a promoter the two Nigerian rappers share blues and jazz fans, so the product does not use it.
 - **Cross-category links are weak for Nigerian artists.** "Fans of Burna Boy also like these films" gave US sports dramas and Indian films, with no Nollywood. The product does not use music-to-film links for that reason.
 
 ## How it is built
