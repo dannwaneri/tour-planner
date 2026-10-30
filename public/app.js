@@ -151,8 +151,21 @@ async function init() {
   $("plan-form").addEventListener("submit", (e) => {
     e.preventDefault();
     const name = $("artist").value.trim();
-    if (name) run({ name, city: $("city").value });
+    if (!name) return;
+    // Keep the URL shareable: ?artist=Phyno&city=London opens the same plan.
+    history.replaceState(null, "", `?${new URLSearchParams({ artist: name, city: $("city").value })}`);
+    run({ name, city: $("city").value });
   });
+
+  // A link with ?artist=...&city=... runs that plan on load (only cities in the list are accepted).
+  const q = new URLSearchParams(location.search);
+  const artist = (q.get("artist") ?? "").trim().slice(0, 80);
+  const city = [...$("city").options].find((o) => o.value === q.get("city"))?.value;
+  if (artist && city) {
+    $("artist").value = artist;
+    $("city").value = city;
+    run({ name: artist, city });
+  }
 }
 
 init();

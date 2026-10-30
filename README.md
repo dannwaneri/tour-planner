@@ -3,7 +3,9 @@
 **In Qloo's data, Phyno has fan data for 1 area of London. Burna Boy has 1,579.** Most rising African artists are in Phyno's position: too small for the data that tour planning needs. This agent fills the gap with the closest similar artist who has enough data, and it always says when it does that.
 
 **Live demo:** https://tour-planner.fpl-test.workers.dev
-Try "Phyno" in London (thin data, so it uses a proxy) or "Wizkid" in Toronto (own data).
+Open a finished example directly (these load in under a second):
+- [Phyno in London](https://tour-planner.fpl-test.workers.dev/?artist=Phyno&city=London): thin data, so it uses a proxy
+- [Wizkid in Toronto](https://tour-planner.fpl-test.workers.dev/?artist=Wizkid&city=Toronto): the artist's own data
 
 ## The problem
 
