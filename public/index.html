@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Tour Planner</title>
+  <meta name="description" content="Plan a rising African artist's first show abroad with Qloo taste data: where the fans cluster, which places match, and who to open with.">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="top">
+    <div class="wrap">
+      <h1>Tour Planner</h1>
+      <p class="lede">Plan a rising African artist's first show abroad. Every fact comes from Qloo's taste data, and each part of the plan says where it came from.</p>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <form id="plan-form" class="card form" autocomplete="off">
+      <label>
+        <span>Artist</span>
+        <input id="artist" name="artist" required maxlength="80" placeholder="e.g. Phyno">
+      </label>
+      <label>
+        <span>City</span>
+        <select id="city" name="city" required></select>
+      </label>
+      <button id="go" type="submit">Plan the show</button>
+      <p class="hint">Try: Phyno in London (thin data, so it uses a proxy), or Wizkid in Toronto (own data).</p>
+    </form>
+
+    <section id="status" class="status" role="status" aria-live="polite" hidden></section>
+
+    <section id="choose" class="card" hidden>
+      <h2>Which artist do you mean?</h2>
+      <p class="muted" id="choose-msg"></p>
+      <div id="choices" class="choices"></div>
+    </section>
+
+    <section id="result" hidden>
+      <div class="card headline">
+        <p class="eyebrow" id="r-meta"></p>
+        <h2 id="r-headline"></h2>
+      </div>
+
+      <div class="grid">
+        <div class="card map-card">
+          <div class="map-head">
+            <h3>Where fans of this kind of music cluster</h3>
+            <p id="map-note" class="muted"></p>
+          </div>
+          <div id="map" role="img" aria-label="Map of fan areas and matching places"></div>
+          <ul class="legend">
+            <li><span class="key key-area"></span>Fan area (darker = stronger)</li>
+            <li><span class="key key-live"></span>Place with live music or event space</li>
+            <li><span class="key key-place"></span>Other matching place</li>
+          </ul>
+        </div>
+
+        <div class="side">
+          <div id="sections"></div>
+        </div>
+      </div>
+
+      <div class="grid two">
+        <div class="card">
+          <h3>Opening acts: shared fans</h3>
+          <p class="muted">Artists whose fans overlap with this artist's (Qloo).</p>
+          <ol id="acts-shared" class="acts"></ol>
+          <p id="acts-gone" class="muted small" hidden></p>
+        </div>
+        <div class="card">
+          <h3>Opening acts: the city's own scene</h3>
+          <p class="muted">Afrobeats artists distinctive to this city's audience (Qloo). Not a measure of shared fans.</p>
+          <ol id="acts-local" class="acts"></ol>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>What this plan does not show</h3>
+        <ul id="caveats" class="caveats"></ul>
+        <details class="prov">
+          <summary>Show the Qloo requests behind this plan</summary>
+          <pre id="prov"></pre>
+        </details>
+      </div>
+    </section>
+  </main>
+
+  <footer class="wrap foot">
+    <p>Taste data: <a href="https://www.qloo.com/" rel="noopener">Qloo</a>. Plan written by Claude from that data only. Qloo describes what groups with shared taste like, not what one person will do, and not ticket sales.</p>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="app.js"></script>
+</body>
+</html>

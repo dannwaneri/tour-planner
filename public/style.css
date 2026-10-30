@@ -1,0 +1,118 @@
+:root {
+  --bg: #f7f5f0;
+  --card: #ffffff;
+  --ink: #1d1f1c;
+  --muted: #5d625a;
+  --line: #e2ded4;
+  --accent: #0f6b4f;      /* deep green */
+  --accent-ink: #ffffff;
+  --warm: #c9771a;        /* amber: live music / event space */
+  --area: #0f6b4f;
+  --place: #6b7f74;
+  --badge-artist: #e3f1ea;
+  --badge-proxy: #fbecd6;
+  --badge-ai: #e8e8f3;
+  --focus: #c9771a;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #121412;
+    --card: #1b1e1b;
+    --ink: #ecebe6;
+    --muted: #a3a89f;
+    --line: #2d322d;
+    --accent: #3fb489;
+    --accent-ink: #0b1410;
+    --warm: #f0a24a;
+    --area: #3fb489;
+    --place: #8fa398;
+    --badge-artist: #183528;
+    --badge-proxy: #3d2c14;
+    --badge-ai: #26263a;
+  }
+}
+
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font: 16px/1.5 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+a { color: var(--accent); }
+.wrap { max-width: 1100px; margin: 0 auto; padding: 0 16px; }
+
+.top { padding: 28px 0 8px; }
+h1 { margin: 0; font-size: 1.6rem; letter-spacing: -0.01em; }
+.lede { margin: 6px 0 0; color: var(--muted); max-width: 60ch; }
+h2 { margin: 0; font-size: 1.25rem; line-height: 1.35; }
+h3 { margin: 0 0 4px; font-size: 1rem; }
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 16px;
+  margin: 16px 0;
+}
+.muted { color: var(--muted); margin: 0 0 8px; }
+.small { font-size: 0.875rem; }
+
+.form { display: grid; grid-template-columns: 2fr 1.4fr auto; gap: 12px; align-items: end; }
+.form label { display: grid; gap: 4px; font-weight: 600; font-size: 0.9rem; }
+.form input, .form select {
+  font: inherit; padding: 10px 12px; border-radius: 8px;
+  border: 1px solid var(--line); background: var(--bg); color: var(--ink);
+}
+button {
+  font: inherit; font-weight: 600; padding: 10px 18px; border-radius: 8px; border: 0;
+  background: var(--accent); color: var(--accent-ink); cursor: pointer;
+}
+button:disabled { opacity: 0.6; cursor: progress; }
+:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
+.hint { grid-column: 1 / -1; margin: 0; color: var(--muted); font-size: 0.875rem; }
+
+.status { padding: 12px 16px; border-radius: 10px; background: var(--card); border: 1px solid var(--line); }
+.status.error { border-color: #b3261e; }
+
+.choices { display: grid; gap: 8px; }
+.choices button { text-align: left; background: var(--bg); color: var(--ink); border: 1px solid var(--line); font-weight: 400; }
+.choices button strong { display: block; }
+
+.headline .eyebrow { margin: 0 0 4px; color: var(--muted); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.04em; }
+
+.grid { display: grid; grid-template-columns: 3fr 2fr; gap: 16px; align-items: start; }
+.grid.two { grid-template-columns: 1fr 1fr; }
+.grid > .card, .side .card { margin: 0; }
+.side { display: grid; gap: 12px; }
+
+.map-head { margin-bottom: 8px; }
+#map { height: 460px; border-radius: 8px; border: 1px solid var(--line); }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .leaflet-tile-pane { filter: invert(1) hue-rotate(180deg) brightness(0.85) contrast(0.9); }
+}
+.legend { list-style: none; padding: 0; margin: 10px 0 0; display: flex; flex-wrap: wrap; gap: 14px; font-size: 0.85rem; color: var(--muted); }
+.key { display: inline-block; width: 12px; height: 12px; margin-right: 6px; vertical-align: -1px; border-radius: 3px; }
+.key-area { background: var(--area); opacity: 0.6; }
+.key-live { background: var(--warm); border-radius: 50%; }
+.key-place { background: var(--place); border-radius: 50%; }
+
+.section .badge {
+  display: inline-block; font-size: 0.75rem; font-weight: 600; padding: 2px 8px; border-radius: 999px; margin-bottom: 6px;
+}
+.badge.artist_data { background: var(--badge-artist); }
+.badge.proxy_data { background: var(--badge-proxy); }
+.badge.ai_summary { background: var(--badge-ai); }
+.section p { margin: 0; }
+
+.acts { margin: 0; padding-left: 20px; }
+.caveats { margin: 0; padding-left: 20px; }
+.prov { margin-top: 12px; }
+.prov pre { overflow-x: auto; font-size: 0.8rem; background: var(--bg); padding: 10px; border-radius: 8px; max-height: 280px; }
+
+.foot { color: var(--muted); font-size: 0.85rem; padding-bottom: 32px; }
+
+@media (max-width: 760px) {
+  .form, .grid, .grid.two { grid-template-columns: 1fr; }
+  #map { height: 340px; }
+}

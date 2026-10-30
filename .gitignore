@@ -1,0 +1,9 @@
+# Qloo response data must never reach the public repo (API terms).
+results/
+.env
+.dev.vars
+node_modules/
+.wrangler/
+
+# Internal planning notes (contain place names and counts copied from Qloo answers).
+PLAN.md

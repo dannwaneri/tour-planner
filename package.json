@@ -1,0 +1,19 @@
+{
+  "name": "tour-planner",
+  "version": "0.0.1",
+  "private": true,
+  "type": "module",
+  "license": "MIT",
+  "scripts": {
+    "test": "node --test \"test/*.test.js\"",
+    "dev": "wrangler dev",
+    "db:local": "wrangler d1 migrations apply tour-planner --local",
+    "deploy": "wrangler deploy"
+  },
+  "devDependencies": {
+    "wrangler": "^4.83.0"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^1.0.0"
+  }
+}

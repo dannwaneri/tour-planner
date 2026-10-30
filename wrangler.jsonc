@@ -1,0 +1,32 @@
+{
+  "name": "tour-planner",
+  "main": "src/index.js",
+  "compatibility_date": "2026-04-22",
+  "observability": { "enabled": true },
+  // The page in public/ is served directly; only /api/* reaches the Worker code.
+  "assets": { "directory": "./public" },
+  "vars": {
+    // Upstream Qloo calls per UTC day (cache misses only). Cached answers are free.
+    "QLOO_DAILY_CAP": "1500",
+    // Claude model calls per UTC day. A fresh plan uses about 3-4; cached plans use none.
+    "CLAUDE_DAILY_CAP": "150"
+  },
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "tour-planner",
+      "database_id": "7851ef16-6a9c-4c6d-b7a1-3174c6d9dcc5",
+      "migrations_dir": "migrations"
+    }
+  ],
+  "ratelimits": [
+    {
+      "name": "IP_LIMIT",
+      "namespace_id": "1001",
+      "simple": { "limit": 30, "period": 60 }
+    }
+  ]
+  // Secrets (set with `wrangler secret put`, or in .dev.vars locally — never here):
+  //   QLOO_API_KEY      — hackathon key, only valid against https://hackathon.api.qloo.com
+  //   ANTHROPIC_API_KEY — Claude API key for the planning agent
+}
