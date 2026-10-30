@@ -59,7 +59,7 @@ We hid the real map of artists who do have data, picked their proxy, and compare
 
 - **The map shows where fans of this kind of music cluster, not one artist's own fans.** In the small-proxy test, every similar artist matched almost equally well (9.5 to 10 of 10 on average across 53 candidates). The proxy choice matters less than the label suggests.
 - **The proxy test checks agreement with Qloo's own maps, not ticket sales.** Similarity and heatmaps may share the same taste data, so some agreement may be built in.
-- **Qloo cannot rank cities abroad for an artist**, so the user picks the city. In our test, ranking artists by city gave empty results for most cities, even for Taylor Swift.
+- **The user picks the city; the agent does not rank cities.** Our first method (scoring named artists for each city's audience with `signal.location.query`) gave empty results for most cities, even for Taylor Swift. A heatmap over a whole region can rank cities, but thin-data artists, the users this tool is for, have little heatmap data to rank. We did not build or test region-wide ranking.
 - **"Places" are mostly restaurants and lounges, not concert halls.** They are useful for listening events and promotion. The live-music and event-space flags do not show capacity or availability.
 - **Qloo does not mark every artist who stopped performing.** Fela Kuti (d. 1997) has no `end_year`. The plan tells the user to check each suggested artist.
 - **Name search is global.** "Ice" returns Ice Cube and Iceage, not Ice Prince. Type the full name.

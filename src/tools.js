@@ -5,7 +5,8 @@
 
 import { QlooError } from "./qloo.js";
 
-// The user picks the city (Qloo cannot rank cities abroad for an artist — see PLAN.md).
+// The user picks the city. Our city-audience ranking test returned empty results for most cities, and
+// thin-data artists have too little heatmap data for region-wide ranking (see README, Known limits).
 export const CITIES = [
   "London", "Manchester", "Birmingham", "Dublin", "Paris",
   "Houston", "Atlanta", "New York City", "Washington DC", "Dallas", "Toronto",
