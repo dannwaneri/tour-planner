@@ -9,7 +9,8 @@
     // Upstream Qloo calls per UTC day (cache misses only). Cached answers are free.
     "QLOO_DAILY_CAP": "1500",
     // Claude model calls per UTC day. A fresh plan uses about 3-4; cached plans use none.
-    "CLAUDE_DAILY_CAP": "150"
+    // Raised from 150 for the judging period: about 100-130 fresh plans, at most ~$15 a day.
+    "CLAUDE_DAILY_CAP": "400"
   },
   "d1_databases": [
     {

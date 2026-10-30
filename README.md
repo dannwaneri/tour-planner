@@ -71,7 +71,7 @@ We hid the real map of artists who do have data, picked their proxy, and compare
 - **Qloo tools** (`src/tools.js`): `resolve_artist`, `similar_artists`, `fan_map`, `fan_places`, `opening_acts`.
 - **Claude agent loop** (`src/agent.js`): Claude Opus 5.5 with tool use. The loop is bounded: at most 6 model calls per plan, each counted against a daily cap. The plan comes back through a strict `submit_plan` tool, so every section has a source tag. Map cells stay on the server; the model sees only summaries.
 - **Page** (`public/`): plain HTML, CSS and JS, with Leaflet and OpenStreetMap tiles. API text is inserted as text, never as HTML.
-- **Cost limits:** 30 requests per minute per IP, 1,500 Qloo calls and 150 Claude calls per day. Finished plans are cached for a day, so repeat demos cost nothing.
+- **Cost limits:** 30 requests per minute per IP, 1,500 Qloo calls and 400 Claude calls per day. Finished plans are cached for 14 days, so repeat demos cost nothing.
 
 Note: Qloo's hackathon kit offers `qloo mcp`, but it does not support serverless hosts. This project calls the Qloo REST API directly from the Worker.
 

@@ -9,7 +9,8 @@ import { makeQloo, d1Cache, d1Budget, QlooError } from "./qloo.js";
 import { TOOLS, CITIES } from "./tools.js";
 import { runAgent } from "./agent.js";
 
-const PLAN_TTL_S = 24 * 3600;
+// Finished plans are kept 14 days so the example plans stay instant through judging.
+const PLAN_TTL_S = 14 * 24 * 3600;
 
 const json = (body, status = 200, headers = {}) =>
   new Response(JSON.stringify(body), { status, headers: { "content-type": "application/json; charset=utf-8", ...headers } });
@@ -40,7 +41,7 @@ async function handlePlan(request, env) {
   const budget = budgetFor(env);
   const qloo = makeQloo({ apiKey: env.QLOO_API_KEY, cache, budget });
 
-  // Finished plans are cached for a day, so a repeat demo costs no model calls.
+  // Finished plans are cached (PLAN_TTL_S), so a repeat demo costs no model calls.
   const planKey = `plan:${artist_id ?? norm(name)}|${cityMatch}`;
   const cached = await cache.get(planKey);
   if (cached) return json({ ...cached, cached: true });
